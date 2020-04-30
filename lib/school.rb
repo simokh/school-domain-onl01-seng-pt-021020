@@ -1,29 +1,27 @@
 require 'pry'
 
 class School
-  attr_reader :roster
+  attr_writer :name, :grade
+  attr_reader :roster 
 
   def initialize(school)
-    @school= school
-    @roster= {}
+    @school = school
+    @roster = {}
   end
 
-  def add_student(name,grade)
-    @name= name
-    @grade= grade
+  def add_student(name, grade)
     if @roster.include?(grade) == false
-      @roster[grade] = []
-    end
-    @roster[grade] << name
-  end
+            @roster[grade] = []
+          end
+          @roster[grade] << name   
+          # binding.pry
+  end 
 
-  def grade(num)
-    @roster[num]
-  end
+  def grade(grade)
+    @roster[grade]
+  end 
 
   def sort
-    @roster.each do |grade, name|
-      @roster[grade] = name.sort
-    end
+    @roster.each {|grade, name| @roster[grade] = name.sort} 
   end 
 end
