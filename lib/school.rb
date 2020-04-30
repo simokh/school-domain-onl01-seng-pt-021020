@@ -10,10 +10,12 @@ class School
   end
 
   def add_student(name, grade)
-    if @roster.include?(grade) == false
-            @roster[grade] = []
-          end
-          @roster[grade] << name   
+    # if @roster.include?(grade) == false
+    # if !@roster.include?(grade)
+            # @roster[grade] = []
+          # end
+          roster[grade] ||= []
+          roster[grade] << name   
           # binding.pry
   end 
 
@@ -25,3 +27,8 @@ class School
     @roster.each {|grade, name| @roster[grade] = name.sort} 
   end 
 end
+
+school = School.new("hazm")
+school.add_student("simo", 20)
+puts school.roster
+puts school.grade(20)
